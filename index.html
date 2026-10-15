@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>태종 — 다시는 흔들리지 않을 나라를 설계한 왕</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Serif+KR:wght@300;400;600&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:       #1a1410;
+    --sepia:     #8B6914;
+    --moss:      #5a6b4a;
+    --stone:     #9b9080;
+    --accent:    #c4611a;
+    --pale:      #faf7f2;
+    --parchment: #f5f0e8;
+    --gold:      #c4a040;
+    --crimson:   #8a1a1a;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--pale); color:var(--ink); font-family:'Noto Serif KR',serif; font-weight:300; line-height:2.0; }
+
+  .masthead { background:var(--ink); color:var(--parchment); text-align:center; padding:4.5rem 2rem 4rem; position:relative; overflow:hidden; }
+  .masthead::before { content:''; position:absolute; inset:0; background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,255,255,0.02) 2px,rgba(255,255,255,0.02) 4px); }
+  .masthead-label { font-family:'Nanum Gothic',sans-serif; font-size:0.78rem; letter-spacing:0.32em; color:var(--gold); text-transform:uppercase; margin-bottom:1.2rem; }
+  .masthead h1 { font-family:'Nanum Myeongjo',serif; font-weight:800; font-size:2.5rem; line-height:1.45; margin-bottom:1rem; }
+  .masthead-sub { font-family:'Nanum Myeongjo',serif; font-size:1.05rem; color:#c9c0b2; font-weight:400; margin-bottom:1.2rem; }
+  .masthead-meta { font-family:'Nanum Gothic',sans-serif; font-size:0.85rem; color:var(--stone); letter-spacing:0.05em; }
+
+  main { max-width:760px; margin:0 auto; padding:3.5rem 1.75rem 2rem; }
+
+  .theme-quote { font-family:'Nanum Myeongjo',serif; font-size:1.22rem; line-height:2.05; color:#2a2520; text-align:center; padding:0 1rem; margin-bottom:1.2rem; font-weight:400; }
+  .theme-quote strong { color:var(--crimson); font-weight:700; }
+  .theme-caption { text-align:center; font-family:'Nanum Gothic',sans-serif; font-size:0.8rem; color:var(--stone); letter-spacing:0.15em; margin-bottom:3.5rem; }
+
+  .section { margin-bottom:3.5rem; }
+  .section-label { font-family:'Nanum Gothic',sans-serif; font-size:0.75rem; letter-spacing:0.28em; color:var(--sepia); text-transform:uppercase; margin-bottom:0.6rem; }
+  .section h2 { font-family:'Nanum Myeongjo',serif; font-weight:700; font-size:1.5rem; margin-bottom:1.2rem; color:var(--ink); }
+  .section p { margin-bottom:1.1rem; font-size:1.02rem; color:#2a2520; }
+  .section p strong { color:var(--crimson); font-weight:600; }
+
+  /* 연대기 */
+  .timeline { border-left:2px solid #ddd2bd; margin:1.8rem 0 0 0.4rem; padding-left:1.6rem; }
+  .tl-item { position:relative; margin-bottom:1.7rem; }
+  .tl-item::before { content:''; position:absolute; left:-1.98rem; top:0.62rem; width:9px; height:9px; border-radius:50%; background:var(--gold); border:2px solid var(--pale); }
+  .tl-item.dark::before { background:var(--crimson); }
+  .tl-year { font-family:'Nanum Gothic',sans-serif; font-size:0.8rem; color:var(--sepia); letter-spacing:0.1em; font-weight:700; }
+  .tl-title { font-family:'Nanum Myeongjo',serif; font-size:1.05rem; font-weight:700; color:var(--ink); margin:0.15rem 0 0.25rem; }
+  .tl-desc { font-size:0.93rem; color:#4a4136; line-height:1.85; }
+  .tl-site { display:inline-block; font-family:'Nanum Gothic',sans-serif; font-size:0.72rem; letter-spacing:0.08em; color:var(--pale); background:var(--moss); padding:0.1rem 0.55rem; border-radius:2px; margin-top:0.35rem; }
+
+  /* 에피소드 카드 */
+  .ep-card { display:block; text-decoration:none; color:inherit; background:var(--parchment); border:1px solid #ddd2bd; border-left:5px solid var(--gold); padding:1.6rem 1.8rem; margin-bottom:1.4rem; border-radius:2px; transition:box-shadow .2s; }
+  .ep-card:hover { box-shadow:0 3px 14px rgba(26,20,16,0.12); }
+  .ep-num { font-family:'Nanum Gothic',sans-serif; font-size:0.75rem; letter-spacing:0.3em; color:var(--sepia); text-transform:uppercase; margin-bottom:0.4rem; }
+  .ep-title { font-family:'Nanum Myeongjo',serif; font-size:1.35rem; font-weight:800; color:var(--ink); margin-bottom:0.55rem; }
+  .ep-lede { font-size:0.95rem; color:#4a4136; line-height:1.9; margin-bottom:0.7rem; }
+  .ep-tags { font-family:'Nanum Gothic',sans-serif; font-size:0.78rem; color:var(--stone); }
+  .ep-tags b { color:var(--moss); font-weight:700; }
+
+  .note-box { background:var(--parchment); border:1px solid #ddd2bd; border-left:4px solid var(--moss); padding:1.1rem 1.3rem; margin:1.6rem 0; border-radius:2px; }
+  .note-box-title { font-family:'Nanum Gothic',sans-serif; font-size:0.78rem; letter-spacing:0.2em; color:var(--moss); text-transform:uppercase; margin-bottom:0.5rem; font-weight:700; }
+  .note-box p { font-size:0.93rem; color:#4a4136; margin-bottom:0; line-height:1.9; }
+
+  footer { text-align:center; font-family:'Nanum Gothic',sans-serif; font-size:0.82rem; color:var(--stone); padding:2.5rem 1.5rem 3rem; line-height:1.9; }
+  footer strong { color:var(--sepia); }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead-label">인물기행 시리즈</div>
+  <h1>태종 — 다시는 흔들리지 않을 나라를 설계한 왕</h1>
+  <div class="masthead-sub">아버지도, 형제도, 아내도, 사돈도 — 왕권 앞에서는 모든 관계를 저울에 올린 남자의 길</div>
+  <div class="masthead-meta">광통교 · 창덕궁 · 헌릉 — 옴니버스 3부작 답사기</div>
+</div>
+
+<main>
+
+  <p class="theme-quote">
+    그는 조선을 지키고 번성시킬 사람은 자신뿐이라 믿었다.<br>
+    그래서 가능성 있는 도전자를 전부 치웠다 — 아버지도, 형제도, 계모도, 아내의 가문도, 훗날의 사돈도.<br>
+    그가 끝내 지켜낸 것은 왕권과, 자신보다 오래 살아남은 세 아들이었다.<br>
+    <strong>그리고 그는 둘 다 지켰다.</strong>
+  </p>
+  <p class="theme-caption">시리즈를 관통하는 하나의 질문 · 비극이었을까, 정확히 맞아떨어진 계산이었을까</p>
+
+  <section class="section">
+    <div class="section-label">Prologue</div>
+    <h2>가장 유능했고, 가장 외로웠던 왕</h2>
+    <p>
+      태종 이방원(1367~1422)은 조선 초기 왕권과 통치 체제를 굳힌 핵심 설계자였다. 아버지 태조를 도와 나라를 세웠고, 사병을 혁파했고, 6조직계제로 통치 구조를 완성했고, 호패법을 시행했으며, 홍수에 무너진 도성의 다리를 돌로 다시 놓았다. 그가 다진 기반 위에서 세종의 치세가 피어났다.
+    </p>
+    <p>
+      그러나 그 업적의 목록 옆에는 또 하나의 목록이 나란히 놓인다. 개국의 동지 정도전을 죽였고, 이복동생 방번·방석을 죽였고, 형 방간을 꺾었고, 계모 신덕왕후의 정릉을 도성 밖으로 옮기고 그 석물을 다리 축조에 썼고, 아내의 남동생 넷을 모두 제거했고, 왕관을 벗은 뒤에는 아들의 장인마저 지워버렸다.
+    </p>
+    <p>
+      두 목록은 별개의 것이 아니다. <strong>같은 저울의 양쪽 접시다.</strong> 그는 조선을 지키고 번성시킬 사람은 자신뿐이라 믿었고, 그래서 도전이 될 가능성 자체를 전부 지웠다. 그가 끝내 지켜낸 것은 왕권과, 자신보다 오래 살아남은 세 아들이었다. 왕권은 살아서 세종에게 넘겼고, 양녕·효령·세종은 그의 사후에도 왕실 질서 안에서 각자의 자리를 지켰다. 이 시리즈는 그 저울이 놓였던 세 곳의 현장을 직접 걸으며, 수많은 비극을 만들면서도 정치적으로는 <strong>놀라울 만큼 정확히 성공한 계산</strong>이었던 한 인간의 전략을 따라간다.
+    </p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">The Path — 태종의 길</div>
+    <h2>연대기로 보는 저울질의 기록</h2>
+    <div class="timeline">
+      <div class="tl-item dark">
+        <div class="tl-year">1398 · 제1차 왕자의 난</div>
+        <div class="tl-title">개국의 동지와 이복동생들을 죽이다</div>
+        <div class="tl-desc">경복궁 일대에서 정도전 세력을 제거하고 세자 방석과 방번을 죽였다. 세자 자리를 빼앗겼다는 배제감이 칼이 되었다.</div>
+        <span class="tl-site">1편 광통교에서 다룸</span>
+      </div>
+      <div class="tl-item dark">
+        <div class="tl-year">1398~1402 · 부자의 결별</div>
+        <div class="tl-title">아버지를 거스르다</div>
+        <div class="tl-desc">태조는 아들을 피해 소요산을 거쳐 함흥으로 은거했고, 조사의의 난(1402)으로 부자는 사실상 무력 충돌까지 갔다. 함흥차사 설화는 대부분 후대의 야사지만, 아버지의 증오는 실록이 증언하는 사실이다.</div>
+        <span class="tl-site">1편 광통교에서 다룸</span>
+      </div>
+      <div class="tl-item dark">
+        <div class="tl-year">1400 · 제2차 왕자의 난 → 즉위</div>
+        <div class="tl-title">형을 꺾고 왕위에 오르다</div>
+        <div class="tl-desc">형 방간과의 무력 충돌에서 승리하고 정종의 양위를 받아 즉위했다. 피로 얻은 왕좌였다.</div>
+        <span class="tl-site">1편 광통교에서 다룸</span>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1404~1406 · 재천도와 새 궁궐</div>
+        <div class="tl-title">경복궁을 두고 새 궁을 짓다</div>
+        <div class="tl-desc">경복궁 대신 새 궁을 택했다. 향교동에 새 이궁을 짓고 후원(후일의 비원)까지 조성했다. 피의 기억을 등지고 새 통치 공간을 만든 선택이었다.</div>
+        <span class="tl-site">2편 창덕궁에서 다룸</span>
+      </div>
+      <div class="tl-item dark">
+        <div class="tl-year">1407~1416 · 외척 숙청</div>
+        <div class="tl-title">처가를 몰살하다</div>
+        <div class="tl-desc">왕자의 난의 밤 목숨을 함께하겠다던 아내 원경왕후 — 그 처가의 민무구·민무질·민무휼·민무회 4형제를 모두 제거했다. 1411년에는 왕비 폐출까지 공개 선언했다.</div>
+        <span class="tl-site">3편 헌릉에서 다룸</span>
+      </div>
+      <div class="tl-item dark">
+        <div class="tl-year">1409~1410 · 정릉 이장과 광통교</div>
+        <div class="tl-title">계모의 무덤돌을 다리 밑에 깔다</div>
+        <div class="tl-desc">신덕왕후의 정릉을 도성 밖으로 옮기고, 홍수로 무너진 광통교를 그 무덤 석물로 다시 놓았다. 원한 풀이인 동시에 도성 최대의 다리를 석조 인프라로 격상시킨 치수 사업 — 감정과 행정이 한 공사에 겹쳐졌다.</div>
+        <span class="tl-site">1편 광통교에서 다룸</span>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1414 · 6조직계제</div>
+        <div class="tl-title">여섯 개의 길을 모두 왕에게로</div>
+        <div class="tl-desc">의정부를 건너뛰고 6조가 왕에게 직접 보고하는 체제. 겉으로는 권한의 분산, 실제로는 왕 1인으로의 집중 — 10여 년을 준비한 뒤에야 실행한 치밀한 수순이었다.</div>
+        <span class="tl-site">2편 창덕궁에서 다룸</span>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1418 · 폐세자와 양위</div>
+        <div class="tl-title">맏아들을 지키지 못하고, 살아서 물려주다</div>
+        <div class="tl-desc">거듭된 비행 끝에 양녕을 폐하고 셋째 충녕(세종)을 세자로 세웠다. 두 달 뒤 왕위를 넘기고 상왕으로 물러났다 — 피로 왕좌를 얻은 자가 택한 가장 안전한 승계였다.</div>
+        <span class="tl-site">3편 헌릉에서 다룸</span>
+      </div>
+      <div class="tl-item dark">
+        <div class="tl-year">1418 · 심온 사사</div>
+        <div class="tl-title">왕관을 벗고도, 사돈을 지우다</div>
+        <div class="tl-desc">세종의 장인 심온을 강상인의 옥사에 엮어 하루 만에 자진케 했다. 국구가 된 지 석 달 만이었다. 아들 곁에도 외척의 불씨는 남기지 않았다.</div>
+        <span class="tl-site">3편 헌릉에서 다룸</span>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1420~1422 · 헌릉</div>
+        <div class="tl-title">애증의 아내 곁에 눕다</div>
+        <div class="tl-desc">원경왕후가 먼저 떠나자 그 곁의 자리를 스스로 비워뒀고, 2년 뒤 그 자리에 묻혔다. 조선 최초의 쌍릉 — 고려 공민왕·노국공주의 능제를 따온, 그답지 않게 애틋한 형식이었다.</div>
+        <span class="tl-site">3편 헌릉에서 다룸</span>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1418~1486 · 세 아들의 이후</div>
+        <div class="tl-title">누가 왕이 되느냐보다, 흔들리지 않는 나라</div>
+        <div class="tl-desc">1차 왕자의 난을 "적장자 승계원칙"으로 정당화했던 그가, 정작 적장자 양녕을 폐위하고 택현론에 따라 충녕(세종)을 세웠다. 양녕은 자리를 잃었지만 목숨은 69세(1462)까지 지켜졌고, 효령은 여섯 왕을 거치며 90세(1486)까지 살았다. 세종은 32년 치세로 조선의 전성기를 열었다.</div>
+        <span class="tl-site">3편 헌릉에서 다룸</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Narrative Arc</div>
+    <h2>세 현장을 관통하는 한 줄</h2>
+    <p><strong>광통교 — 도전의 가능성을 제거하다.</strong><br><strong>창덕궁 — 제거한 권력을 제도로 만들다.</strong><br><strong>헌릉 — 자신이 없어도 지속될 왕권을 남기다.</strong></p>
+    <p>육조거리는 별도의 답사 편으로 떼어내지 않는다. 현장에 남은 실체가 약한 만큼 창덕궁의 통치 서사 안에서 다룬다. 왕은 창덕궁에 있었지만 육조는 경복궁 앞에 있었고, 1414년 육조직계제 아래 그 여섯 길의 보고는 왕에게 직접 모였다. <strong>보이는 장소보다 보이지 않는 권력 구조</strong>를 읽는 대목이다.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Episodes — 3부작</div>
+    <h2>세 곳의 현장, 세 개의 얼굴</h2>
+
+    <a class="ep-card" href="./gwangtonggyo.html">
+      <div class="ep-num">제1편 · 서울 중구 청계천</div>
+      <div class="ep-title">죽은 자에게도 원한을 갚다 — 광통교(廣通橋)</div>
+      <div class="ep-lede">
+        다리 밑에 거꾸로 박힌 왕비의 무덤돌. 계모를 향한 원한과 도성의 치수 행정이 한 번의 공사에 겹쳐진 현장에서, 왕자의 난까지 거슬러 올라간다. 교각에 새겨진 경진지평(1760)·기사대준 명문은 이 다리가 400년 넘게 왕조의 기준점이었음을 증언한다.
+      </div>
+      <div class="ep-tags">서사 <b>계모 · 형제 · 아버지 · 치수</b> &nbsp;|&nbsp; 답사 <b>완료 (현장 노트 반영)</b></div>
+    </a>
+
+    <a class="ep-card" href="./changdeokgung.html">
+      <div class="ep-num">제2편 · 서울 종로구</div>
+      <div class="ep-title">피의 기억을 등진 궁 — 창덕궁(昌德宮)</div>
+      <div class="ep-lede">
+        형제를 죽인 경복궁을 두고 굳이 새로 지은 궁. 살기는 창덕궁에서, 나라의 얼굴은 경복궁에서 — 이곳에서 그는 6조직계제라는 가장 치밀한 권력 구조를 완성했다. 별도 답사처로 떼어내기 어려운 육조거리의 이야기도 이 편에 함께 묶어, 사람의 제거가 어떻게 제도의 설계로 바뀌는지를 따라간다.
+      </div>
+      <div class="ep-tags">서사 <b>거리두기 · 통치(6조직계제) · 안식</b> &nbsp;|&nbsp; 답사 <b>예정 (현장 노트 추가 예정)</b></div>
+    </a>
+
+    <a class="ep-card" href="./heolleung.html">
+      <div class="ep-num">제3편 · 서울 서초구 내곡동</div>
+      <div class="ep-title">스스로 비워둔 자리 — 헌릉(獻陵)</div>
+      <div class="ep-lede">
+        처가를 몰살하고 폐출을 선언했던 아내 곁에, 그는 스스로 자기 자리를 비워뒀다. 조선 최초의 쌍릉, 두 배의 석물, 고석 다섯 개, 신·구 두 기의 신도비 — 능이 말해주는 것들과 함께, 양녕 폐세자와 심온 사사를 지나 세 아들이 사후에도 흔들리지 않았던 이유, 그리고 세종으로 이어지는 실마리까지 따라간다.
+      </div>
+      <div class="ep-tags">서사 <b>처가 · 양녕 · 심온 · 원경왕후</b> &nbsp;|&nbsp; 답사 <b>완료 (현장 노트 반영)</b></div>
+    </a>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Editorial Principles</div>
+    <h2>이 시리즈가 지키는 것들</h2>
+    <p>
+      <strong>현장이 먼저다.</strong> 모든 에피소드는 실제 답사를 거친 뒤에야 완성된다. 자료 조사로 쓴 초안은 어디까지나 뼈대이며, 현장에서 확인한 것과 확인하지 못한 것을 구분해 적는다. 실제로 광통교 교각의 간지 명문(경진지평·기사대준)은 사전 조사에 없던, 현장에서만 얻을 수 있었던 발견이다.
+    </p>
+    <p>
+      <strong>야사와 정사를 구분한다.</strong> 함흥차사처럼 널리 알려진 이야기라도 실록에 없으면 "후대의 야사"임을 명시한다. 정릉 석물이 "거꾸로 끼워졌다"는 설도 현장 확인만으로는 단정할 수 없어 "전해진다" 수준으로만 쓴다.
+    </p>
+    <p>
+      <strong>사료가 갈리면 병기한다.</strong> 후원 조성 시점(1405 vs 1406), 청계천 복개 연도(1958 vs 1959), 기사대준의 기사년(1809 vs 1869) — 자료 간 불일치는 감추지 않고 그대로 드러내 적는다.
+    </p>
+    <div class="note-box">
+      <div class="note-box-title">다루지 않은 현장에 대하여</div>
+      <p>
+        출생지 함흥과 정몽주 격살의 선죽교(개성)는 북한 지역이라 답사할 수 없어 고증 자료로만 참조했다. 태조가 은거했던 소요산(동두천)은 행궁 터 표지석 하나만 남아 있고, 6조가 늘어섰던 육조거리(광화문광장)도 터 표석과 안내판 수준이라, 독립 에피소드 대신 각 편의 삽화로만 다뤘다. 현장이 한 편을 지탱하지 못하면 억지로 세우지 않는다 — 그것도 이 시리즈의 원칙이다.
+      </p>
+    </div>
+  </section>
+
+  <div style="border-top:1px solid #ddd2bd; padding-top:2rem; margin-top:1rem;">
+    <p class="theme-quote" style="font-size:1.05rem;">
+      유능함과 계산이 한 몸이었던 왕.<br>
+      그가 지키려 한 것, 그리고 정확히 지켜낸 것을 따라 걷는 세 번의 답사가 여기 있다.
+    </p>
+  </div>
+
+</main>
+
+<footer>
+  <strong>태종 — 다시는 흔들리지 않을 나라를 설계한 왕</strong> · 옴니버스 3부작<br>
+  1편 광통교 → 2편 창덕궁 → 3편 헌릉<br>
+  자매 시리즈 「영웅의 길 — 태조 이성계」 (전 10편 + 프롤로그)
+</footer>
+
+</body>
+</html>
